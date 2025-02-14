@@ -10,6 +10,8 @@ const Upload = ({ onBack, onNext }) => {
   const [emailError, setEmailError] = useState("");
   const [uploading, setUploading] = useState(false);
 
+
+
   // ✅ Load only valid Cloudinary image from localStorage
   useEffect(() => {
     const storedImage = localStorage.getItem("uploadedImage");
@@ -128,7 +130,8 @@ const Upload = ({ onBack, onNext }) => {
 
         <div className="button-group">
           <button className="back-btn" onClick={onBack}>Back</button>
-          <button className="next-btn" onClick={onNext} disabled={!email || !!emailError || !imageUrl}>
+          <button className="next-btn"   onClick={() => {
+                  onNext(); }} disabled={!name.trim() || !email.trim() || !!emailError || !imageUrl || !request.trim()}>
             Get My Free Ticket
           </button>
         </div>
